@@ -7,6 +7,7 @@ import (
 	"reza/todolist-api/config"
 
 	"reza/todolist-api/endpoint"
+	subtaskUc "reza/todolist-api/usecase/subtask"
 	taskUc "reza/todolist-api/usecase/task"
 
 	"github.com/go-playground/validator/v10"
@@ -34,10 +35,20 @@ func main() {
 
 	settings.Load(settings.SetPostgresRepo(settings))
 	usecaseTask := taskUc.NewTaskUsecase(settings.Gorm)
+	usecaseSubTask := subtaskUc.NewSubTaskUsecase(settings.Gorm)
+	//task endpoint...
 	e.POST("/task", endpoint.MakeCreateTaskEndpoint(usecaseTask))
 	e.GET("/task/:id", endpoint.MakeDetailProductEndpoint(usecaseTask))
 	e.GET("/task", endpoint.MakeListTaksEndpoint(usecaseTask))
 	e.PUT("/task/:id", endpoint.MakeUpdateTaskEndpoint(usecaseTask))
 	e.DELETE("/task/:id", endpoint.MakeDeleteTaskEndpoint(usecaseTask))
+
+	//subtask endpoint...
+	e.POST("/task/:id/subtask", endpoint.MakeCreateSubTaskEndpoint(usecaseSubTask))
+	// e.GET("/task/:id", endpoint.MakeDetailProductEndpoint(usecaseTask))
+	// e.GET("/task", endpoint.MakeListTaksEndpoint(usecaseTask))
+	// e.PUT("/task/:id", endpoint.MakeUpdateTaskEndpoint(usecaseTask))
+	// e.DELETE("/task/:id", endpoint.MakeDeleteTaskEndpoint(usecaseTask))
+
 	e.Logger.Fatal(e.Start(":1323"))
 }

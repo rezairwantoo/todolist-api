@@ -28,6 +28,7 @@ cover-report:
 mock-generate:
 	@mockgen -source=repository/gorm/interface.go -destination=mocks/mock_repository.go -package=mocks
 	@mockgen -source=usecase/task/interface.go -destination=mocks/task/mock_usecase.go -package=mocks -mock_names Usecase=MockTaskUsecase
+	@mockgen -source=usecase/subtask/interface.go -destination=mocks/subtask/mock_usecase.go -package=mocks -mock_names Usecase=MockSubTaskUsecase
 
 postgres-migrate-up:
 	@ migrate -path resources/postgres/migrations/ -database "postgresql://username:secretkey@localhost:5432/database_name?sslmode=disable" -verbose up

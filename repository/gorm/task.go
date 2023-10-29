@@ -14,6 +14,7 @@ func (p *Repository) CreateTask(ctx context.Context, req model.CreateTaskRequest
 		File:        req.File,
 		CreatedAt:   &now,
 		UpdatedAt:   &now,
+		TodoID:      req.TaskID,
 	}
 
 	return p.Conn.Create(task).Error
