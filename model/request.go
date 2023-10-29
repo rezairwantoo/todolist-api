@@ -50,9 +50,14 @@ type ListSubTaskRequest struct {
 }
 
 type UpdateSubTaskRequest struct {
-	TaskID      int64  `json:"id" validate:"required"`
+	TaskID      int64  `json:"task_id" validate:"required"`
 	ID          int64  `json:"id" validate:"required"`
 	Title       string `json:"title" validate:"required"`
 	Description string `json:"description" validate:"required"`
 	File        string `json:"file"`
+}
+
+type DeleteSubTaskRequest struct {
+	ID     int64 `json:"id" validate:"required"`
+	TaskID int64 `json:"task_id" validate:"required"`
 }

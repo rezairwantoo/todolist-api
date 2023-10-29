@@ -50,6 +50,21 @@ func (mr *MockSubTaskUsecaseMockRecorder) Create(ctx, req interface{}) *gomock.C
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Create", reflect.TypeOf((*MockSubTaskUsecase)(nil).Create), ctx, req)
 }
 
+// Delete mocks base method.
+func (m *MockSubTaskUsecase) Delete(ctx context.Context, req model.DeleteSubTaskRequest) (model.DeleteResponse, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "Delete", ctx, req)
+	ret0, _ := ret[0].(model.DeleteResponse)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// Delete indicates an expected call of Delete.
+func (mr *MockSubTaskUsecaseMockRecorder) Delete(ctx, req interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Delete", reflect.TypeOf((*MockSubTaskUsecase)(nil).Delete), ctx, req)
+}
+
 // Detail mocks base method.
 func (m *MockSubTaskUsecase) Detail(ctx context.Context, req model.DetailSubTaskRequest) (model.DetailResponse, error) {
 	m.ctrl.T.Helper()
@@ -78,4 +93,19 @@ func (m *MockSubTaskUsecase) List(ctx context.Context, req model.ListSubTaskRequ
 func (mr *MockSubTaskUsecaseMockRecorder) List(ctx, req interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "List", reflect.TypeOf((*MockSubTaskUsecase)(nil).List), ctx, req)
+}
+
+// Update mocks base method.
+func (m *MockSubTaskUsecase) Update(ctx context.Context, req model.UpdateSubTaskRequest) (model.UpdateResponse, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "Update", ctx, req)
+	ret0, _ := ret[0].(model.UpdateResponse)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// Update indicates an expected call of Update.
+func (mr *MockSubTaskUsecaseMockRecorder) Update(ctx, req interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Update", reflect.TypeOf((*MockSubTaskUsecase)(nil).Update), ctx, req)
 }

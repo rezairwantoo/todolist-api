@@ -196,3 +196,48 @@ func MakeUpdateSubTaskEndpoint(u subtaskkUc.SubTaskUsecase) echo.HandlerFunc {
 		return c.JSON(http.StatusOK, resp)
 	}
 }
+
+func MakeDeleteSubTaskEndpoint(u subtaskkUc.SubTaskUsecase) echo.HandlerFunc {
+	return func(c echo.Context) error {
+		var (
+			deleteRequest model.DeleteSubTaskRequest
+			err           error
+			resp          model.DeleteResponse
+			sDec          []byte
+			taskID        int
+		)
+
+		base64ID := c.Param("id")
+		if sDec, err = b64.URLEncoding.DecodeString(base64ID); sDec == nil || err != nil {
+			zlog.Info().Interface("error", err).Msg("Validate Param Detail")
+			return c.JSON(http.StatusBadRequest, "invalid Parameter")
+		}
+
+		strDec := string(sDec)
+		if taskID, err = strconv.Atoi(strDec); err != nil {
+			zlog.Info().Interface("error", err).Msg("Failed conv str to int")
+			return c.JSON(http.StatusBadRequest, "invalid Parameter")
+		}
+
+		deleteRequest.TaskID = int64(taskID)
+
+		base64ID = c.Param("subid")
+		if sDec, err = b64.URLEncoding.DecodeString(base64ID); sDec == nil || err != nil {
+			zlog.Info().Interface("error", err).Msg("Validate Param Detail")
+			return c.JSON(http.StatusBadRequest, "invalid Parameter")
+		}
+
+		strDec = string(sDec)
+		if taskID, err = strconv.Atoi(strDec); err != nil {
+			zlog.Info().Interface("error", err).Msg("Failed conv str to int")
+			return c.JSON(http.StatusBadRequest, "invalid Parameter")
+		}
+
+		deleteRequest.ID = int64(taskID)
+		if resp, err = u.Delete(c.Request().Context(), deleteRequest); err != nil {
+			return c.JSON(http.StatusInternalServerError, err.Error())
+		}
+
+		return c.JSON(http.StatusOK, resp)
+	}
+}
