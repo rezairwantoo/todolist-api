@@ -24,6 +24,6 @@ type UpdateTaskRequest struct {
 	File        string `json:"file"`
 }
 
-type DeleteRequest struct {
-	ProductID int64 `json:"id" validate:"required"`
+type DeleteTaskRequest struct {
+	TaskID int64 `json:"id" validate:"required"`
 }

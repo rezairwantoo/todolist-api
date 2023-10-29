@@ -49,6 +49,34 @@ func (mr *MockTaskRepositoryMockRecorder) CreateTask(ctx, req interface{}) *gomo
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateTask", reflect.TypeOf((*MockTaskRepository)(nil).CreateTask), ctx, req)
 }
 
+// DeleteSubTask mocks base method.
+func (m *MockTaskRepository) DeleteSubTask(ctx context.Context, taskID int64) error {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "DeleteSubTask", ctx, taskID)
+	ret0, _ := ret[0].(error)
+	return ret0
+}
+
+// DeleteSubTask indicates an expected call of DeleteSubTask.
+func (mr *MockTaskRepositoryMockRecorder) DeleteSubTask(ctx, taskID interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeleteSubTask", reflect.TypeOf((*MockTaskRepository)(nil).DeleteSubTask), ctx, taskID)
+}
+
+// DeleteTask mocks base method.
+func (m *MockTaskRepository) DeleteTask(ctx context.Context, taskID int64) error {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "DeleteTask", ctx, taskID)
+	ret0, _ := ret[0].(error)
+	return ret0
+}
+
+// DeleteTask indicates an expected call of DeleteTask.
+func (mr *MockTaskRepositoryMockRecorder) DeleteTask(ctx, taskID interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeleteTask", reflect.TypeOf((*MockTaskRepository)(nil).DeleteTask), ctx, taskID)
+}
+
 // DetailTask mocks base method.
 func (m *MockTaskRepository) DetailTask(ctx context.Context, req model.DetailTaskRequest) (*model.Task, error) {
 	m.ctrl.T.Helper()

@@ -38,6 +38,6 @@ func main() {
 	e.GET("/task/:id", endpoint.MakeDetailProductEndpoint(usecaseTask))
 	e.GET("/task", endpoint.MakeListTaksEndpoint(usecaseTask))
 	e.PUT("/task/:id", endpoint.MakeUpdateTaskEndpoint(usecaseTask))
-	// e.DELETE("/product/:id", endpoint.MakeDeleteProductEndpoint(usecaseProducts))
+	e.DELETE("/task/:id", endpoint.MakeDeleteTaskEndpoint(usecaseTask))
 	e.Logger.Fatal(e.Start(":1323"))
 }

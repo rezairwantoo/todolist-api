@@ -79,3 +79,18 @@ func (mr *MockTaskUsecaseMockRecorder) List(ctx, req interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "List", reflect.TypeOf((*MockTaskUsecase)(nil).List), ctx, req)
 }
+
+// UpdateTask mocks base method.
+func (m *MockTaskUsecase) UpdateTask(ctx context.Context, req model.UpdateTaskRequest) (model.UpdateResponse, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "UpdateTask", ctx, req)
+	ret0, _ := ret[0].(model.UpdateResponse)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// UpdateTask indicates an expected call of UpdateTask.
+func (mr *MockTaskUsecaseMockRecorder) UpdateTask(ctx, req interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpdateTask", reflect.TypeOf((*MockTaskUsecase)(nil).UpdateTask), ctx, req)
+}

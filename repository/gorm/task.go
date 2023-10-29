@@ -41,3 +41,12 @@ func (p *Repository) UpdateTask(ctx context.Context, req model.Task) error {
 	req.UpdatedAt = &now
 	return p.Conn.Updates(req).Where("id = ?", req.ID).Error
 }
+
+func (p *Repository) DeleteTask(ctx context.Context, taskID int64) error {
+	return p.Conn.Delete(model.Task{}, taskID).Error
+}
+
+func (p *Repository) DeleteSubTask(ctx context.Context, taskID int64) error {
+	var subTask []model.Task
+	return p.Conn.Where("todo_id = ?", taskID).Delete(&subTask).Error
+}

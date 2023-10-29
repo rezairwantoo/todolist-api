@@ -77,3 +77,17 @@ func TestUpdateTask(t *testing.T) {
 		File:        "testmockrepo.txt",
 	})
 }
+
+func TestDeleteTask(t *testing.T) {
+	mockDb, _, _ := sqlmock.New()
+	dialector := postgres.New(postgres.Config{
+		Conn:       mockDb,
+		DriverName: "postgres",
+	})
+	db, _ := gorm.Open(dialector, &gorm.Config{})
+
+	ctx := context.Background()
+	repoPost := NewRepository(db)
+	repoPost.DeleteSubTask(ctx, int64(1))
+	repoPost.DeleteTask(ctx, int64(1))
+}
