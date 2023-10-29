@@ -1,63 +1,18 @@
 {
 	"info": {
-		"_postman_id": "6a1bf529-9028-4425-9905-c57acd49377b",
-		"name": "API Testing",
+		"_postman_id": "f1f85fb4-c114-4dbb-8643-5dd4bdc10113",
+		"name": "todo list",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Create Products",
-			"protocolProfileBehavior": {
-				"disabledSystemHeaders": {}
-			},
+			"name": "Create Task",
 			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "AVZekqU0u9aBMgPwIMEjO8t74rGwQNoG",
-							"type": "string"
-						}
-					]
-				},
 				"method": "POST",
-				"header": [
-					{
-						"key": "X-Securities-Request-PartnerID",
-						"value": "ZPJD4ZDWCU",
-						"type": "default"
-					},
-					{
-						"key": "X-Securities-Signature",
-						"value": "7e56adbd3e64a535c1cb9a94f108b9b65a9f2ce009dbf020ce94617a8c9370ae",
-						"type": "default"
-					},
-					{
-						"key": "X-Securities-Timestamp",
-						"value": "1639672793569",
-						"type": "default"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "default"
-					},
-					{
-						"key": "x-api-key",
-						"value": "cmV6YWE0NjNzaTpncmtNbWp4YjJKNm5laHY3",
-						"type": "default"
-					},
-					{
-						"key": "",
-						"value": "",
-						"type": "default",
-						"disabled": true
-					}
-				],
+				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"item\" : \"Sosro\",\n    \"price\": 5000\n}",
+					"raw": "{\n    \"title\": \"task 4\",\n    \"description\": \"task 4 first endpoint test\",\n    \"file\": \"task4.txt\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -65,14 +20,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:1323/products",
+					"raw": "http://localhost:1323/task",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "1323",
 					"path": [
-						"products"
+						"task"
 					]
 				}
 			},
@@ -84,14 +39,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:1323/products/MQ==",
+					"raw": "http://localhost:1323/task/MQ==",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "1323",
 					"path": [
-						"products",
+						"task",
 						"MQ=="
 					]
 				}
@@ -99,24 +54,24 @@
 			"response": []
 		},
 		{
-			"name": "List Products",
+			"name": "List Task",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:1323/products?limit=1&page=1&search=aQ",
+					"raw": "http://localhost:1323/task?limit=10&page=1",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "1323",
 					"path": [
-						"products"
+						"task"
 					],
 					"query": [
 						{
 							"key": "limit",
-							"value": "1"
+							"value": "10"
 						},
 						{
 							"key": "page",
@@ -124,7 +79,8 @@
 						},
 						{
 							"key": "search",
-							"value": "aQ"
+							"value": "aQ",
+							"disabled": true
 						}
 					]
 				}
@@ -132,13 +88,13 @@
 			"response": []
 		},
 		{
-			"name": "Update Products",
+			"name": "Update task",
 			"request": {
 				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"item\" : \"Aqua\",\n    \"price\": 2000,\n    \"is_active\": true\n}",
+					"raw": "{\n    \"title\": \"task 2 updated\",\n    \"description\": \"task 2 first endpoint test update\",\n    \"file\": \"task2.txt\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -146,35 +102,176 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:1323/product/MQ==",
+					"raw": "http://localhost:1323/task/Mg==",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "1323",
 					"path": [
-						"product",
-						"MQ=="
+						"task",
+						"Mg=="
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Delete Products",
+			"name": "Delete task",
 			"request": {
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:1323/product/MQ==",
+					"raw": "http://localhost:1323/task/Mw==",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "1323",
 					"path": [
-						"product",
-						"MQ=="
+						"task",
+						"Mw=="
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Sub Task",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"subtask 1 task 2\",\n    \"description\": \"subttask 1 dari task 2\",\n    \"file\": \"subtask1.txt\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1323/task/Mg==/subtask",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1323",
+					"path": [
+						"task",
+						"Mg==",
+						"subtask"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Detail sub task",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1323/task/Mg==/subtask/NQ==",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1323",
+					"path": [
+						"task",
+						"Mg==",
+						"subtask",
+						"NQ=="
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List sub Task",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1323/task/Mg==/subtask?limit=10&page=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1323",
+					"path": [
+						"task",
+						"Mg==",
+						"subtask"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "10"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "search",
+							"value": "subasa",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update sub task",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"subtask 1 task 2 updated\",\n    \"description\": \"subttask 1 dari task 2 updated\",\n    \"file\": \"subtask1updated.txt\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1323/task/Mg==/subtask/NQ==",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1323",
+					"path": [
+						"task",
+						"Mg==",
+						"subtask",
+						"NQ=="
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete task Copy",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1323/task/Mg==/subtask/NQ==",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1323",
+					"path": [
+						"task",
+						"Mg==",
+						"subtask",
+						"NQ=="
 					]
 				}
 			},
