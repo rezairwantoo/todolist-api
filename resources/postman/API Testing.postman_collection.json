@@ -276,6 +276,34 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Upload",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"task 4\",\n    \"description\": \"task 4 first endpoint test\",\n    \"file\": \"task4.txt\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1323/task",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1323",
+					"path": [
+						"task"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
