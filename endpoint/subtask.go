@@ -104,3 +104,43 @@ func MakeDetailSubTaskEndpoint(u subtaskkUc.SubTaskUsecase) echo.HandlerFunc {
 		return c.JSON(http.StatusOK, resp)
 	}
 }
+
+func MakeListSubTaksEndpoint(u subtaskkUc.SubTaskUsecase) echo.HandlerFunc {
+	return func(c echo.Context) error {
+		var (
+			listRequest model.ListSubTaskRequest
+			err         error
+			resp        *model.ListResponse
+			sDec        []byte
+			taskID      int
+		)
+
+		listRequest.Search = c.QueryParam("search")
+		page, _ := strconv.Atoi(c.QueryParam("page"))
+		listRequest.Page = int32(page)
+
+		limit, _ := strconv.Atoi(c.QueryParam("limit"))
+		listRequest.Limit = int32(limit)
+
+		base64ID := c.Param("id")
+		if sDec, err = b64.URLEncoding.DecodeString(base64ID); sDec == nil || err != nil {
+			zlog.Info().Interface("error", err).Msg("Validate Param Detail")
+			resp.Message = "invalid parameter"
+			return c.JSON(http.StatusBadRequest, resp)
+		}
+
+		strDec := string(sDec)
+		if taskID, err = strconv.Atoi(strDec); err != nil {
+			zlog.Info().Interface("error", err).Msg("Failed conv str to int")
+			resp.Message = "invalid parameter"
+			return c.JSON(http.StatusBadRequest, resp)
+		}
+
+		listRequest.TaskID = int64(taskID)
+		if resp, err = u.List(c.Request().Context(), listRequest); err != nil {
+			return c.String(http.StatusInternalServerError, err.Error())
+		}
+
+		return c.JSON(http.StatusOK, resp)
+	}
+}

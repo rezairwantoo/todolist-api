@@ -91,3 +91,22 @@ func TestDeleteTask(t *testing.T) {
 	repoPost.DeleteSubTask(ctx, int64(1))
 	repoPost.DeleteTask(ctx, int64(1))
 }
+
+func TestListSubTask(t *testing.T) {
+	mockDb, _, _ := sqlmock.New()
+	dialector := postgres.New(postgres.Config{
+		Conn:       mockDb,
+		DriverName: "postgres",
+	})
+	db, _ := gorm.Open(dialector, &gorm.Config{})
+	repoPost := NewRepository(db)
+	repoPost.ListSubTask(model.Pagination{
+		Limit: 1,
+		Page:  2,
+	}, "test", int64(1))
+
+	repoPost.ListSubTask(model.Pagination{
+		Limit: 0,
+		Page:  0,
+	}, "test", int64(1))
+}

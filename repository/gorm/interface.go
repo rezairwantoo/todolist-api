@@ -12,4 +12,5 @@ type TaskRepository interface {
 	UpdateTask(ctx context.Context, req model.Task) error
 	DeleteTask(ctx context.Context, taskID int64) error
 	DeleteSubTask(ctx context.Context, taskID int64) error
+	ListSubTask(pagination model.Pagination, search string, taskID int64) (*model.Pagination, error)
 }

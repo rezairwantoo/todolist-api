@@ -49,3 +49,33 @@ func (mr *MockSubTaskUsecaseMockRecorder) Create(ctx, req interface{}) *gomock.C
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Create", reflect.TypeOf((*MockSubTaskUsecase)(nil).Create), ctx, req)
 }
+
+// Detail mocks base method.
+func (m *MockSubTaskUsecase) Detail(ctx context.Context, req model.DetailSubTaskRequest) (model.DetailResponse, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "Detail", ctx, req)
+	ret0, _ := ret[0].(model.DetailResponse)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// Detail indicates an expected call of Detail.
+func (mr *MockSubTaskUsecaseMockRecorder) Detail(ctx, req interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Detail", reflect.TypeOf((*MockSubTaskUsecase)(nil).Detail), ctx, req)
+}
+
+// List mocks base method.
+func (m *MockSubTaskUsecase) List(ctx context.Context, req model.ListSubTaskRequest) (*model.ListResponse, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "List", ctx, req)
+	ret0, _ := ret[0].(*model.ListResponse)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// List indicates an expected call of List.
+func (mr *MockSubTaskUsecaseMockRecorder) List(ctx, req interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "List", reflect.TypeOf((*MockSubTaskUsecase)(nil).List), ctx, req)
+}

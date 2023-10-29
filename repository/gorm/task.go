@@ -51,3 +51,12 @@ func (p *Repository) DeleteSubTask(ctx context.Context, taskID int64) error {
 	var subTask []model.Task
 	return p.Conn.Where("todo_id = ?", taskID).Delete(&subTask).Error
 }
+
+func (p *Repository) ListSubTask(pagination model.Pagination, search string, taskID int64) (*model.Pagination, error) {
+	var task []*model.Task
+
+	err := p.Conn.Scopes(paginate(task, &pagination, p.Conn)).Where("todo_id = ? AND (title ilike ? OR description ilike ?)", taskID, "%"+search+"%", "%"+search+"%").Find(&task).Error
+	pagination.Rows = task
+
+	return &pagination, err
+}

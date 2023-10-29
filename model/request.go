@@ -40,3 +40,11 @@ type DetailSubTaskRequest struct {
 	TaskID    int64 `json:"id" validate:"required"`
 	SubTaskID int64 `json:"subtask_id" validate:"required"`
 }
+
+type ListSubTaskRequest struct {
+	TaskID int64  `json:"task_id"`
+	Limit  int32  `json:"limit"`
+	Page   int32  `json:"page"`
+	Search string `json:"search"`
+	Offset int32  `json:"offset"`
+}
