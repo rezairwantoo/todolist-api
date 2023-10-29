@@ -35,3 +35,9 @@ func (p *Repository) ListTask(pagination model.Pagination, search string) (*mode
 
 	return &pagination, err
 }
+
+func (p *Repository) UpdateTask(ctx context.Context, req model.Task) error {
+	now, _ := helpers.GetNow()
+	req.UpdatedAt = &now
+	return p.Conn.Updates(req).Where("id = ?", req.ID).Error
+}

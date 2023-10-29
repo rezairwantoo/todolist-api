@@ -78,3 +78,17 @@ func (mr *MockTaskRepositoryMockRecorder) ListTask(pagination, search interface{
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListTask", reflect.TypeOf((*MockTaskRepository)(nil).ListTask), pagination, search)
 }
+
+// UpdateTask mocks base method.
+func (m *MockTaskRepository) UpdateTask(ctx context.Context, req model.Task) error {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "UpdateTask", ctx, req)
+	ret0, _ := ret[0].(error)
+	return ret0
+}
+
+// UpdateTask indicates an expected call of UpdateTask.
+func (mr *MockTaskRepositoryMockRecorder) UpdateTask(ctx, req interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpdateTask", reflect.TypeOf((*MockTaskRepository)(nil).UpdateTask), ctx, req)
+}

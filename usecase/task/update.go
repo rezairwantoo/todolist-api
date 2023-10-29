@@ -8,21 +8,31 @@ import (
 	zlog "github.com/rs/zerolog/log"
 )
 
-func (u *Usecase) Detail(ctx context.Context, req model.DetailTaskRequest) (model.DetailResponse, error) {
+func (u *Usecase) UpdateTask(ctx context.Context, req model.UpdateTaskRequest) (model.UpdateResponse, error) {
 	var (
-		task *model.Task
-		err  error
-		resp model.DetailResponse
+		task      *model.Task
+		err       error
+		resp      model.UpdateResponse
+		detailReq model.DetailTaskRequest
 	)
 
-	if task, err = u.taskRepo.DetailTask(ctx, req); err != nil {
+	detailReq.TaskID = req.ID
+	if task, err = u.taskRepo.DetailTask(ctx, detailReq); err != nil {
 		zlog.Info().Interface("error", err.Error()).Msg("Failed Get products")
 		resp.Message = constant.ErrMsgNotFoundDefault
 		return resp, err
 	}
 
-	return model.DetailResponse{
-		Message: constant.SuccessDetail,
-		Data:    task,
-	}, nil
+	task.Title = req.Title
+	task.Description = req.Description
+	task.File = req.File
+	if err = u.taskRepo.UpdateTask(ctx, *task); err != nil {
+		zlog.Info().Interface("error", err.Error()).Msg("Failed update products")
+		resp.Message = constant.ErrUpdate
+		return resp, err
+	}
+
+	resp.Message = constant.SuccessUpdate
+	resp.Data.Status = true
+	return resp, nil
 }

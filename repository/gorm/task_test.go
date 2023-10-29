@@ -60,3 +60,20 @@ func TestListTask(t *testing.T) {
 		Page:  0,
 	}, "test")
 }
+
+func TestUpdateTask(t *testing.T) {
+	mockDb, _, _ := sqlmock.New()
+	dialector := postgres.New(postgres.Config{
+		Conn:       mockDb,
+		DriverName: "postgres",
+	})
+	db, _ := gorm.Open(dialector, &gorm.Config{})
+
+	ctx := context.Background()
+	repoPost := NewRepository(db)
+	repoPost.UpdateTask(ctx, model.Task{
+		Title:       "testmockrepo",
+		Description: "testmockrepodesc",
+		File:        "testmockrepo.txt",
+	})
+}

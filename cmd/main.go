@@ -37,7 +37,7 @@ func main() {
 	e.POST("/task", endpoint.MakeCreateTaskEndpoint(usecaseTask))
 	e.GET("/task/:id", endpoint.MakeDetailProductEndpoint(usecaseTask))
 	e.GET("/task", endpoint.MakeListTaksEndpoint(usecaseTask))
-	// e.PUT("/product/:id", endpoint.MakeUpdateProductEndpoint(usecaseProducts))
+	e.PUT("/task/:id", endpoint.MakeUpdateTaskEndpoint(usecaseTask))
 	// e.DELETE("/product/:id", endpoint.MakeDeleteProductEndpoint(usecaseProducts))
 	e.Logger.Fatal(e.Start(":1323"))
 }

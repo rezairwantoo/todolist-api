@@ -96,3 +96,42 @@ func MakeListTaksEndpoint(u taskUc.TaskUsecase) echo.HandlerFunc {
 		return c.JSON(http.StatusOK, resp)
 	}
 }
+
+func MakeUpdateTaskEndpoint(u taskUc.TaskUsecase) echo.HandlerFunc {
+	return func(c echo.Context) error {
+		var (
+			updateRequest model.UpdateTaskRequest
+			err           error
+			resp          model.UpdateResponse
+			sDec          []byte
+			taskID        int
+		)
+
+		base64ID := c.Param("id")
+		if sDec, err = b64.URLEncoding.DecodeString(base64ID); sDec == nil || err != nil {
+			zlog.Info().Interface("error", err).Msg("Validate Param Detail")
+			return c.String(http.StatusBadRequest, "invalid Parameter")
+		}
+
+		strDec := string(sDec)
+		if taskID, err = strconv.Atoi(strDec); err != nil {
+			zlog.Info().Interface("error", err).Msg("Failed conv str to int")
+			return c.String(http.StatusBadRequest, "invalid Parameter")
+		}
+
+		updateRequest.ID = int64(taskID)
+		if err = c.Bind(&updateRequest); err != nil {
+			return c.String(http.StatusBadRequest, "bad request")
+		}
+
+		if err = c.Validate(updateRequest); err != nil {
+			zlog.Info().Interface("error", err).Msg("Validate Param Create")
+			return err
+		}
+		if resp, err = u.UpdateTask(c.Request().Context(), updateRequest); err != nil {
+			return c.String(http.StatusInternalServerError, err.Error())
+		}
+
+		return c.JSON(http.StatusOK, resp)
+	}
+}
