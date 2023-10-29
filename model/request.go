@@ -6,8 +6,8 @@ type CreateTaskRequest struct {
 	File        string `json:"file"`
 }
 
-type DetailRequest struct {
-	ProductID int64 `json:"id" validate:"required"`
+type DetailTaskRequest struct {
+	TaskID int64 `json:"id" validate:"required"`
 }
 
 type ListRequest struct {

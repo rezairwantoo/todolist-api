@@ -48,3 +48,18 @@ func (mr *MockTaskRepositoryMockRecorder) CreateTask(ctx, req interface{}) *gomo
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateTask", reflect.TypeOf((*MockTaskRepository)(nil).CreateTask), ctx, req)
 }
+
+// DetailTask mocks base method.
+func (m *MockTaskRepository) DetailTask(ctx context.Context, req model.DetailTaskRequest) (*model.Task, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "DetailTask", ctx, req)
+	ret0, _ := ret[0].(*model.Task)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// DetailTask indicates an expected call of DetailTask.
+func (mr *MockTaskRepositoryMockRecorder) DetailTask(ctx, req interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DetailTask", reflect.TypeOf((*MockTaskRepository)(nil).DetailTask), ctx, req)
+}

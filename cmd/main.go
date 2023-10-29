@@ -35,7 +35,7 @@ func main() {
 	settings.Load(settings.SetPostgresRepo(settings))
 	usecaseTask := taskUc.NewTaskUsecase(settings.Gorm)
 	e.POST("/task", endpoint.MakeCreateTaskEndpoint(usecaseTask))
-	// e.GET("/product/:id", endpoint.MakeDetailProductEndpoint(usecaseProducts))
+	e.GET("/task/:id", endpoint.MakeDetailProductEndpoint(usecaseTask))
 	// e.GET("/products", endpoint.MakeListProductEndpoint(usecaseProducts))
 	// e.PUT("/product/:id", endpoint.MakeUpdateProductEndpoint(usecaseProducts))
 	// e.DELETE("/product/:id", endpoint.MakeDeleteProductEndpoint(usecaseProducts))

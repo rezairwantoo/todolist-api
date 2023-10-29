@@ -7,4 +7,5 @@ import (
 
 type TaskRepository interface {
 	CreateTask(ctx context.Context, req model.CreateTaskRequest) error
+	DetailTask(ctx context.Context, req model.DetailTaskRequest) (*model.Task, error)
 }

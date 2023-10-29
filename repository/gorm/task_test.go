@@ -10,7 +10,7 @@ import (
 	"gorm.io/gorm"
 )
 
-func TestCreateProduct(t *testing.T) {
+func TestCreateTask(t *testing.T) {
 	mockDb, _, _ := sqlmock.New()
 	dialector := postgres.New(postgres.Config{
 		Conn:       mockDb,
@@ -24,5 +24,20 @@ func TestCreateProduct(t *testing.T) {
 		Title:       "testmockrepo",
 		Description: "testmockrepodesc",
 		File:        "testmockrepo.txt",
+	})
+}
+
+func TestDetailTask(t *testing.T) {
+	mockDb, _, _ := sqlmock.New()
+	dialector := postgres.New(postgres.Config{
+		Conn:       mockDb,
+		DriverName: "postgres",
+	})
+	db, _ := gorm.Open(dialector, &gorm.Config{})
+
+	ctx := context.Background()
+	repoPost := NewRepository(db)
+	repoPost.DetailTask(ctx, model.DetailTaskRequest{
+		TaskID: 1,
 	})
 }

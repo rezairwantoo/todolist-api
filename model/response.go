@@ -11,7 +11,7 @@ type CreateResponse struct {
 
 type DetailResponse struct {
 	Message string `json:"message"`
-	Data    Task   `json:"data"`
+	Data    *Task  `json:"data"`
 }
 
 type Pagination struct {

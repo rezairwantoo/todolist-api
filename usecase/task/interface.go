@@ -7,4 +7,5 @@ import (
 
 type TaskUsecase interface {
 	Create(ctx context.Context, req model.CreateTaskRequest) (model.CreateResponse, error)
+	Detail(ctx context.Context, req model.DetailTaskRequest) (model.DetailResponse, error)
 }

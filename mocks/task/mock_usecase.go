@@ -49,3 +49,18 @@ func (mr *MockTaskUsecaseMockRecorder) Create(ctx, req interface{}) *gomock.Call
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Create", reflect.TypeOf((*MockTaskUsecase)(nil).Create), ctx, req)
 }
+
+// Detail mocks base method.
+func (m *MockTaskUsecase) Detail(ctx context.Context, req model.DetailTaskRequest) (model.DetailResponse, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "Detail", ctx, req)
+	ret0, _ := ret[0].(model.DetailResponse)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// Detail indicates an expected call of Detail.
+func (mr *MockTaskUsecaseMockRecorder) Detail(ctx, req interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Detail", reflect.TypeOf((*MockTaskUsecase)(nil).Detail), ctx, req)
+}

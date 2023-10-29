@@ -18,3 +18,11 @@ func (p *Repository) CreateTask(ctx context.Context, req model.CreateTaskRequest
 
 	return p.Conn.Create(task).Error
 }
+
+func (p *Repository) DetailTask(ctx context.Context, req model.DetailTaskRequest) (*model.Task, error) {
+	var err error
+	task := &model.Task{}
+
+	err = p.Conn.First(task, req.TaskID).Error
+	return task, err
+}
