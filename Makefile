@@ -26,11 +26,11 @@ cover-report:
 	@go tool cover -html=cover.out
 
 mock-generate:
-	@mockgen -source=repository/interface.go -destination=mocks/mock_repository.go -package=mocks
-	@mockgen -source=usecase/interface.go -destination=mocks/mock_usecase.go -package=mocks -mock_names Usecase=MockUsecase
+	@mockgen -source=repository/gorm/interface.go -destination=mocks/mock_repository.go -package=mocks
+	@mockgen -source=usecase/task/interface.go -destination=mocks/task/mock_usecase.go -package=mocks -mock_names Usecase=MockTaskUsecase
 
 postgres-migrate-up:
-	@ migrate -path resources/postgres/migrations/ -database "postgresql://username:secretkey@localhost:5432/database_name?sslmode=disable" -verbose up
+	@ migrate -path resources/postgres/migrations/ -database "postgresql://postgres:secretkey@localhost:5432/database_name?sslmode=disable" -verbose up
 
 postgres-migrate-create:
 	@migrate create -ext .sql -dir resources/postgres/migrations $(name)
