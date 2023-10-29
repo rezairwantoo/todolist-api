@@ -36,7 +36,7 @@ func main() {
 	usecaseTask := taskUc.NewTaskUsecase(settings.Gorm)
 	e.POST("/task", endpoint.MakeCreateTaskEndpoint(usecaseTask))
 	e.GET("/task/:id", endpoint.MakeDetailProductEndpoint(usecaseTask))
-	// e.GET("/products", endpoint.MakeListProductEndpoint(usecaseProducts))
+	e.GET("/task", endpoint.MakeListTaksEndpoint(usecaseTask))
 	// e.PUT("/product/:id", endpoint.MakeUpdateProductEndpoint(usecaseProducts))
 	// e.DELETE("/product/:id", endpoint.MakeDeleteProductEndpoint(usecaseProducts))
 	e.Logger.Fatal(e.Start(":1323"))

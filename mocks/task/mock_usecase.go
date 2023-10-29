@@ -64,3 +64,18 @@ func (mr *MockTaskUsecaseMockRecorder) Detail(ctx, req interface{}) *gomock.Call
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Detail", reflect.TypeOf((*MockTaskUsecase)(nil).Detail), ctx, req)
 }
+
+// List mocks base method.
+func (m *MockTaskUsecase) List(ctx context.Context, req model.ListRequest) (*model.ListResponse, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "List", ctx, req)
+	ret0, _ := ret[0].(*model.ListResponse)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// List indicates an expected call of List.
+func (mr *MockTaskUsecaseMockRecorder) List(ctx, req interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "List", reflect.TypeOf((*MockTaskUsecase)(nil).List), ctx, req)
+}

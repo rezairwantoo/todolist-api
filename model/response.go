@@ -14,12 +14,6 @@ type DetailResponse struct {
 	Data    *Task  `json:"data"`
 }
 
-type Pagination struct {
-	Total        int64
-	Page         int64
-	TotalAllData int64 `json:"total_all_data"`
-}
-
 type ListData struct {
 	Data       []Task
 	Pagination Pagination
@@ -27,7 +21,7 @@ type ListData struct {
 
 type ListResponse struct {
 	Message string
-	Data    ListData
+	Data    *Pagination
 }
 
 type UpdateResponse struct {

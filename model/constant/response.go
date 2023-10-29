@@ -12,4 +12,5 @@ const (
 	SuccessUpdate            = "Update task data successfully"
 	ErrDelete                = "Failed Delete task"
 	SuccessDelete            = "Delete task data successfully"
+	ErrInternal              = "Error internal"
 )

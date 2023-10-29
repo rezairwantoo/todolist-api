@@ -73,3 +73,26 @@ func MakeDetailProductEndpoint(u taskUc.TaskUsecase) echo.HandlerFunc {
 		return c.JSON(http.StatusOK, resp)
 	}
 }
+
+func MakeListTaksEndpoint(u taskUc.TaskUsecase) echo.HandlerFunc {
+	return func(c echo.Context) error {
+		var (
+			listRequest model.ListRequest
+			err         error
+			resp        *model.ListResponse
+		)
+
+		listRequest.Search = c.QueryParam("search")
+		page, _ := strconv.Atoi(c.QueryParam("page"))
+		listRequest.Page = int32(page)
+
+		limit, _ := strconv.Atoi(c.QueryParam("limit"))
+		listRequest.Limit = int32(limit)
+
+		if resp, err = u.List(c.Request().Context(), listRequest); err != nil {
+			return c.String(http.StatusInternalServerError, err.Error())
+		}
+
+		return c.JSON(http.StatusOK, resp)
+	}
+}

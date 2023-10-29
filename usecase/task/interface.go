@@ -8,4 +8,5 @@ import (
 type TaskUsecase interface {
 	Create(ctx context.Context, req model.CreateTaskRequest) (model.CreateResponse, error)
 	Detail(ctx context.Context, req model.DetailTaskRequest) (model.DetailResponse, error)
+	List(ctx context.Context, req model.ListRequest) (*model.ListResponse, error)
 }
