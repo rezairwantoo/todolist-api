@@ -47,7 +47,7 @@ func main() {
 	e.POST("/task/:id/subtask", endpoint.MakeCreateSubTaskEndpoint(usecaseSubTask))
 	e.GET("/task/:id/subtask/:subid", endpoint.MakeDetailSubTaskEndpoint(usecaseSubTask))
 	e.GET("/task/:id/subtask", endpoint.MakeListSubTaksEndpoint(usecaseSubTask))
-	// e.PUT("/task/:id", endpoint.MakeUpdateTaskEndpoint(usecaseTask))
+	e.PUT("/task/:id/subtask/:subid", endpoint.MakeUpdateSubTaskEndpoint(usecaseSubTask))
 	// e.DELETE("/task/:id", endpoint.MakeDeleteTaskEndpoint(usecaseTask))
 
 	e.Logger.Fatal(e.Start(":1323"))

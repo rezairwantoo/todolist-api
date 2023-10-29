@@ -48,3 +48,11 @@ type ListSubTaskRequest struct {
 	Search string `json:"search"`
 	Offset int32  `json:"offset"`
 }
+
+type UpdateSubTaskRequest struct {
+	TaskID      int64  `json:"id" validate:"required"`
+	ID          int64  `json:"id" validate:"required"`
+	Title       string `json:"title" validate:"required"`
+	Description string `json:"description" validate:"required"`
+	File        string `json:"file"`
+}

@@ -2,6 +2,7 @@ package subtask
 
 import (
 	"context"
+	"errors"
 	"reza/todolist-api/model"
 	"reza/todolist-api/model/constant"
 
@@ -35,6 +36,7 @@ func (u *Usecase) CheckDetailSubtask(ctx context.Context, req model.DetailSubTas
 
 	if subtask.TodoID != task.ID {
 		resp.Message = constant.ErrDetailInvalidTaskID
+		err = errors.New("Invalid parent task ID")
 		return nil, err
 	}
 

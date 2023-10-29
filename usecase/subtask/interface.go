@@ -9,6 +9,6 @@ type SubTaskUsecase interface {
 	Create(ctx context.Context, req model.CreateSubTaskRequest) (model.CreateResponse, error)
 	Detail(ctx context.Context, req model.DetailSubTaskRequest) (model.DetailResponse, error)
 	List(ctx context.Context, req model.ListSubTaskRequest) (*model.ListResponse, error)
-	// UpdateTask(ctx context.Context, req model.UpdateTaskRequest) (model.UpdateResponse, error)
+	Update(ctx context.Context, req model.UpdateSubTaskRequest) (model.UpdateResponse, error)
 	// DeleteTask(ctx context.Context, req model.DeleteTaskRequest) (model.DeleteResponse, error)
 }
