@@ -3,7 +3,6 @@ package config
 import (
 	"context"
 	"fmt"
-	"log"
 	"reza/todolist-api/model"
 	repository "reza/todolist-api/repository/gorm"
 
@@ -35,7 +34,6 @@ func (r *Postgres) Setup(s *Settings) {
 func NewPostgresConnection(ctx context.Context, s *model.PostgreSQLConfig) *gorm.DB {
 	var err error
 	connection := fmt.Sprintf("host= %s user=%s password=%s dbname=%s port=%d sslmode=disable TimeZone=Asia/Jakarta", s.Host, s.Username, s.Password, s.Database, s.Port)
-	log.Println(connection)
 	db, err := gorm.Open(postgres.New(postgres.Config{
 		DSN: connection,
 	}), &gorm.Config{})

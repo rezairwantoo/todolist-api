@@ -1,8 +1,9 @@
 package model
 
-type CreateRequest struct {
-	Item  string `json:"item" validate:"required"`
-	Price int64  `json:"price" validate:"required"`
+type CreateTaskRequest struct {
+	Title       string `json:"title" validate:"required"`
+	Description string `json:"description" validate:"required"`
+	File        string `json:"file"`
 }
 
 type DetailRequest struct {

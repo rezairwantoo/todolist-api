@@ -10,8 +10,8 @@ type CreateResponse struct {
 }
 
 type DetailResponse struct {
-	Message string   `json:"message"`
-	Data    Products `json:"data"`
+	Message string `json:"message"`
+	Data    Task   `json:"data"`
 }
 
 type Pagination struct {
@@ -21,7 +21,7 @@ type Pagination struct {
 }
 
 type ListData struct {
-	Data       []Products
+	Data       []Task
 	Pagination Pagination
 }
 

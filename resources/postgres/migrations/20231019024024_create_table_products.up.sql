@@ -1,4 +1,4 @@
-create table todo (
+create table tasks (
 	id serial CONSTRAINT todo_pk PRIMARY KEY,
 	todo_id int8,
 	title VARCHAR(255) not null,
