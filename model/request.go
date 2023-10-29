@@ -35,3 +35,8 @@ type CreateSubTaskRequest struct {
 	File        string `json:"file"`
 	TaskID      int64  `json:"task_id" validate:"required"`
 }
+
+type DetailSubTaskRequest struct {
+	TaskID    int64 `json:"id" validate:"required"`
+	SubTaskID int64 `json:"subtask_id" validate:"required"`
+}

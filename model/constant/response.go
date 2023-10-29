@@ -13,4 +13,5 @@ const (
 	ErrDelete                = "Failed Delete task"
 	SuccessDelete            = "Delete task data successfully"
 	ErrInternal              = "Error internal"
+	ErrDetailInvalidTaskID   = "invalid task id"
 )

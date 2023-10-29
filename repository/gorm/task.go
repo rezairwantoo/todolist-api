@@ -31,7 +31,7 @@ func (p *Repository) DetailTask(ctx context.Context, req model.DetailTaskRequest
 func (p *Repository) ListTask(pagination model.Pagination, search string) (*model.Pagination, error) {
 	var task []*model.Task
 
-	err := p.Conn.Scopes(paginate(task, &pagination, p.Conn)).Where("title ilike ? OR description ilike ?", "%"+search+"%", "%"+search+"%").Find(&task).Error
+	err := p.Conn.Scopes(paginate(task, &pagination, p.Conn)).Where("todo_id = 0 AND (title ilike ? OR description ilike ?)", "%"+search+"%", "%"+search+"%").Find(&task).Error
 	pagination.Rows = task
 
 	return &pagination, err
