@@ -6,13 +6,13 @@ import (
 
 // Usecase contain all methods for usecase
 type Usecase struct {
-	postgreSQL repository.PostgresSQLRepository
+	taskRepo repository.TaskRepository
 }
 
 func NewTaskUsecase(
-	repositoryPostgres repository.PostgresSQLRepository,
+	repositoryPostgres repository.TaskRepository,
 ) TaskUsecase {
 	return &Usecase{
-		postgreSQL: repositoryPostgres,
+		taskRepo: repositoryPostgres,
 	}
 }

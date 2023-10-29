@@ -1,15 +1,15 @@
 package constant
 
 const (
-	SuccessCreate            = "Create product successfully"
-	ErrCreate                = "Failed Create product"
+	SuccessCreate            = "Create task successfully"
+	ErrCreate                = "Failed Create task"
 	ErrMsgNotFoundDefault    = "Data not found"
-	SuccessDetail            = "Get product data successfully"
-	ErrGetData               = "Failed Get Data products"
-	ErrProductAlreadyDeleted = "Product Already Deleted"
+	SuccessDetail            = "Get task data successfully"
+	ErrGetData               = "Failed Get Data tasks"
+	ErrProductAlreadyDeleted = "task Already Deleted"
 	SuccessNoDataChange      = "No data changes"
-	ErrUpdate                = "Failed Update product"
-	SuccessUpdate            = "Update product data successfully"
-	ErrDelete                = "Failed Delete product"
-	SuccessDelete            = "Delete product data successfully"
+	ErrUpdate                = "Failed Update task"
+	SuccessUpdate            = "Update task data successfully"
+	ErrDelete                = "Failed Delete task"
+	SuccessDelete            = "Delete task data successfully"
 )

@@ -14,9 +14,9 @@ type ISettings interface {
 	Setup(s *Settings)
 }
 type Settings struct {
-	ctx                 context.Context
-	Config              *model.Config
-	PostgresSQLProvider *repository.PostgresRepository
+	ctx    context.Context
+	Config *model.Config
+	Gorm   *repository.Repository
 }
 
 // NewSettings ...

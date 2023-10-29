@@ -33,7 +33,7 @@ func main() {
 	}
 
 	settings.Load(settings.SetPostgresRepo(settings))
-	usecaseTask := taskUc.NewTaskUsecase(settings.PostgresSQLProvider)
+	usecaseTask := taskUc.NewTaskUsecase(settings.Gorm)
 	e.POST("/task", endpoint.MakeCreateTaskEndpoint(usecaseTask))
 	// e.GET("/product/:id", endpoint.MakeDetailProductEndpoint(usecaseProducts))
 	// e.GET("/products", endpoint.MakeListProductEndpoint(usecaseProducts))

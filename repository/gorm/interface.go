@@ -5,6 +5,6 @@ import (
 	"reza/todolist-api/model"
 )
 
-type PostgresSQLRepository interface {
+type TaskRepository interface {
 	CreateTask(ctx context.Context, req model.CreateTaskRequest) error
 }

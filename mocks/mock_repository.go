@@ -12,31 +12,31 @@ import (
 	gomock "github.com/golang/mock/gomock"
 )
 
-// MockPostgresSQLRepository is a mock of PostgresSQLRepository interface.
-type MockPostgresSQLRepository struct {
+// MockTaskRepository is a mock of TaskRepository interface.
+type MockTaskRepository struct {
 	ctrl     *gomock.Controller
-	recorder *MockPostgresSQLRepositoryMockRecorder
+	recorder *MockTaskRepositoryMockRecorder
 }
 
-// MockPostgresSQLRepositoryMockRecorder is the mock recorder for MockPostgresSQLRepository.
-type MockPostgresSQLRepositoryMockRecorder struct {
-	mock *MockPostgresSQLRepository
+// MockTaskRepositoryMockRecorder is the mock recorder for MockTaskRepository.
+type MockTaskRepositoryMockRecorder struct {
+	mock *MockTaskRepository
 }
 
-// NewMockPostgresSQLRepository creates a new mock instance.
-func NewMockPostgresSQLRepository(ctrl *gomock.Controller) *MockPostgresSQLRepository {
-	mock := &MockPostgresSQLRepository{ctrl: ctrl}
-	mock.recorder = &MockPostgresSQLRepositoryMockRecorder{mock}
+// NewMockTaskRepository creates a new mock instance.
+func NewMockTaskRepository(ctrl *gomock.Controller) *MockTaskRepository {
+	mock := &MockTaskRepository{ctrl: ctrl}
+	mock.recorder = &MockTaskRepositoryMockRecorder{mock}
 	return mock
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
-func (m *MockPostgresSQLRepository) EXPECT() *MockPostgresSQLRepositoryMockRecorder {
+func (m *MockTaskRepository) EXPECT() *MockTaskRepositoryMockRecorder {
 	return m.recorder
 }
 
 // CreateTask mocks base method.
-func (m *MockPostgresSQLRepository) CreateTask(ctx context.Context, req model.CreateTaskRequest) error {
+func (m *MockTaskRepository) CreateTask(ctx context.Context, req model.CreateTaskRequest) error {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "CreateTask", ctx, req)
 	ret0, _ := ret[0].(error)
@@ -44,7 +44,7 @@ func (m *MockPostgresSQLRepository) CreateTask(ctx context.Context, req model.Cr
 }
 
 // CreateTask indicates an expected call of CreateTask.
-func (mr *MockPostgresSQLRepositoryMockRecorder) CreateTask(ctx, req interface{}) *gomock.Call {
+func (mr *MockTaskRepositoryMockRecorder) CreateTask(ctx, req interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateTask", reflect.TypeOf((*MockPostgresSQLRepository)(nil).CreateTask), ctx, req)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateTask", reflect.TypeOf((*MockTaskRepository)(nil).CreateTask), ctx, req)
 }

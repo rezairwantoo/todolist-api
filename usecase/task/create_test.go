@@ -13,7 +13,7 @@ import (
 
 var _ = Describe("Create Task", func() {
 	var (
-		mockPostgre *mocks.MockPostgresSQLRepository
+		mockPostgre *mocks.MockTaskRepository
 		mockUsecase TaskUsecase
 		ctx         context.Context
 		err         error
@@ -23,7 +23,7 @@ var _ = Describe("Create Task", func() {
 		mockCtrl := gomock.NewController(GinkgoT())
 		mockCtrl.Finish()
 		ctx = context.Background()
-		mockPostgre = mocks.NewMockPostgresSQLRepository(mockCtrl)
+		mockPostgre = mocks.NewMockTaskRepository(mockCtrl)
 		mockUsecase = NewTaskUsecase(mockPostgre)
 		err = errors.New("errors")
 	})

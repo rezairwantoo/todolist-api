@@ -6,7 +6,7 @@ import (
 	"reza/todolist-api/model"
 )
 
-func (p *PostgresRepository) CreateTask(ctx context.Context, req model.CreateTaskRequest) error {
+func (p *Repository) CreateTask(ctx context.Context, req model.CreateTaskRequest) error {
 	now, _ := helpers.GetNow()
 	task := &model.Task{
 		Title:       req.Title,

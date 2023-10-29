@@ -20,11 +20,11 @@ type Postgres struct {
 func (r *Postgres) Setup(s *Settings) {
 	var dbConn *gorm.DB
 	dbConn = NewPostgresConnection(s.ctx, &s.Config.Postgres)
-	if s.PostgresSQLProvider == nil {
+	if s.Gorm == nil {
 		repositoryPostgres := repository.NewRepository(dbConn)
-		s.PostgresSQLProvider = repositoryPostgres
+		s.Gorm = repositoryPostgres
 	} else {
-		s.PostgresSQLProvider.Conn = dbConn
+		s.Gorm.Conn = dbConn
 	}
 
 	r.Setting.Setup(s)

@@ -11,14 +11,14 @@ import (
 
 var _ = Describe("Create Products", func() {
 	var (
-		mockPostgre *mocks.MockPostgresSQLRepository
+		mockPostgre *mocks.MockTaskRepository
 		mockUsecase taskUc.TaskUsecase
 	)
 
 	BeforeEach(func() {
 		mockCtrl := gomock.NewController(GinkgoT())
 		mockCtrl.Finish()
-		mockPostgre = mocks.NewMockPostgresSQLRepository(mockCtrl)
+		mockPostgre = mocks.NewMockTaskRepository(mockCtrl)
 		mockUsecase = taskUc.NewTaskUsecase(mockPostgre)
 	})
 
