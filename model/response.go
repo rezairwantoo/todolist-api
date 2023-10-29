@@ -33,3 +33,12 @@ type DeleteResponse struct {
 	Message string             `json:"message"`
 	Data    ResponseDataCreate `json:"data"`
 }
+
+type UploadResponse struct {
+	Message string             `json:"message"`
+	Data    UploadResponseData `json:"data"`
+}
+
+type UploadResponseData struct {
+	Filename string `json:"filename"`
+}

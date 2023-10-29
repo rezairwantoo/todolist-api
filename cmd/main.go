@@ -50,5 +50,7 @@ func main() {
 	e.PUT("/task/:id/subtask/:subid", endpoint.MakeUpdateSubTaskEndpoint(usecaseSubTask))
 	e.DELETE("/task/:id/subtask/:subid", endpoint.MakeDeleteSubTaskEndpoint(usecaseSubTask))
 
+	e.POST("/upload", endpoint.MakeUploadFile())
+
 	e.Logger.Fatal(e.Start(":1323"))
 }
